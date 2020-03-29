@@ -6,8 +6,9 @@ const initialState = {
 };
 
 export default createReducer(initialState, {
-	[INIT_DEMO]: state => ({
+	[INIT_DEMO]: (state, action) => ({
 		...state,
-		loading: true
+		loading: action.payload,
+		id: action.id
 	})
 });
