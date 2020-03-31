@@ -1,0 +1,11 @@
+.logo {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.logo a {
+	color: inherit;
+	font-size: 1.8rem;
+	margin-left: 1rem;
+}
