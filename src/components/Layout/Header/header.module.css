@@ -1,0 +1,13 @@
+.header {
+	background: #f4f5f6;
+	border-bottom: .1rem solid #d1d1d1;
+	width: 100%;
+	z-index: 1;
+}
+
+.headerRow {
+	display: flex;
+	align-items: center;
+	height: 100%;
+	justify-content: space-between;
+}
