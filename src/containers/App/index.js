@@ -7,6 +7,7 @@ import Header from 'components/Layout/Header';
 import Logo from 'components/Logo';
 import Navigation from 'components/Navigation';
 import Footer from 'components/Layout/Footer';
+import Main from 'components/Layout/Main';
 import BooksPage from 'containers/BooksPage';
 
 
@@ -17,9 +18,11 @@ function App() {
 				<Logo />
 				<Navigation />
 			</Header>
-			<Switch>
-				<Route exact path="/" component={BooksPage} />
-			</Switch>
+			<Main>
+				<Switch>
+					<Route exact path="/" component={BooksPage} />
+				</Switch>
+			</Main>
 			<Footer />
 		</div>
 	);
