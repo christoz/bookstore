@@ -1,27 +1,29 @@
 import React from 'react';
 import PropTypes from 'prop-types';
+import randomColor from 'randomcolor';
 
-import styles from './product.module.scss';
+import ProductWrapper from './Product';
 
 const Product = props => {
-	const imgSrc = (index) => {
-		return props.img || `http://lorempixel.com/300/360/abstract/${index}`;
-	};
-
+	const color = randomColor({ hue: 'purple', luminosity: 'light' });
 	return (
-		<div className={styles.product}>
-			<img src={imgSrc(props.id)} alt={props.title} className={styles.productImg} />
-			<h4 className={styles.productTitle}>
-				{props.title}
-			</h4>
-		</div>
+		<ProductWrapper>
+			<ProductWrapper.Asset bgColor={color}></ProductWrapper.Asset>
+			<ProductWrapper.Details>
+				<h4>
+					{props.title}
+				</h4>
+				<span>{props.author}</span>
+			</ProductWrapper.Details>
+		</ProductWrapper>
 	);
 };
 
 Product.propTypes = {
 	img: PropTypes.any,
 	title: PropTypes.string,
-	id: PropTypes.number
+	id: PropTypes.number,
+	author: PropTypes.string
 };
 
 export default Product;

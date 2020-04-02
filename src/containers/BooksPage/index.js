@@ -15,7 +15,12 @@ const BooksPage = props => {
 			<Flex>
 				{
 					books.map((item, index) => (
-						<Item key={index} col={3} marginBottom={20}>
+						<Item
+							key={index}
+							col={3}
+							marginBottom={20}
+							stretch
+						>
 							<Product {...item} id={index} />
 						</Item>
 					))
