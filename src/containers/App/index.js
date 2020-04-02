@@ -1,7 +1,8 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
 
-import styles from './app.module.css';
+import GlobalStyles from 'globalStyles';
+import AppWrapper from './AppWrapper';
 
 import Header from 'components/Layout/Header';
 import Logo from 'components/Logo';
@@ -10,10 +11,10 @@ import Footer from 'components/Layout/Footer';
 import Main from 'components/Layout/Main';
 import BooksPage from 'containers/BooksPage';
 
-
 function App() {
 	return (
-		<div className={styles.app}>
+		<AppWrapper>
+			<GlobalStyles />
 			<Header>
 				<Logo />
 				<Navigation />
@@ -24,7 +25,7 @@ function App() {
 				</Switch>
 			</Main>
 			<Footer />
-		</div>
+		</AppWrapper>
 	);
 }
 

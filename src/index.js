@@ -2,23 +2,25 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 import { Provider } from 'react-redux';
 import { BrowserRouter as Router } from 'react-router-dom';
+import { ThemeProvider } from 'styled-components';
 
 import * as serviceWorker from './serviceWorker';
 import configureStore from 'store/configureStore';
 
-// Global styles
-import 'globalStyles/styles.scss';
+import theme from './theme';
 
 import App from './containers/App';
 
 const store = configureStore();
 
 ReactDOM.render(
-	<Provider store={store}>
-		<Router>
-			<App />
-		</Router>
-	</Provider>,
+	<ThemeProvider theme={theme}>
+		<Provider store={store}>
+			<Router>
+				<App />
+			</Router>
+		</Provider>
+	</ThemeProvider>,
 	document.getElementById('root')
 );
 
