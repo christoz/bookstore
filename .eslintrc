@@ -1,0 +1,65 @@
+{
+	"env": {
+		"browser": true,
+		"commonjs": true,
+		"es6": true,
+		"node": true,
+		"jest": true
+	},
+	"plugins": [
+		"react",
+		"react-hooks",
+		"standard",
+		"promise",
+		"async-await"
+	],
+	"extends": [
+		"react-app",
+		"plugin:react/recommended"
+	],
+	"parserOptions": {
+		"sourceType": "module",
+		"ecmaVersion": 2018
+	},
+	"settings": {
+		"react": {
+			"version": "detect"
+		}
+	},
+	"rules": {
+		"linebreak-style": [
+			"error",
+			"unix"
+		],
+		"react-hooks/rules-of-hooks": "error",
+		"react-hooks/exhaustive-deps": "warn",
+		"react/button-has-type": 0,
+		"react/no-access-state-in-setstate": 0,
+		"react/default-props-match-prop-types": 0,
+		"react/jsx-no-bind": 0,
+		"react/no-did-update-set-state": 0,
+		"react/jsx-no-undef": 2,
+		"react/jsx-uses-react": "error",
+		"react/jsx-uses-vars": "error",
+		"react/destructuring-assignment": 0,
+		"no-tabs": 0,
+		"no-console": 0,
+		"async-await/space-after-async": 2,
+		"async-await/space-after-await": 2,
+		"import/no-extraneous-dependencies": 0,
+		"jsx-a11y/label-has-associated-control": 0,
+		"jsx-a11y/label-has-for": 0,
+		"jsx-a11y/click-events-have-key-events": 0,
+		"jsx-a11y/no-static-element-interactions": 0,
+		"jsx-a11y/anchor-is-valid": 0,
+		"jsx-a11y/alt-text": 0,
+		"quotes": [
+			"error",
+			"single"
+		],
+		"semi": [
+			"error",
+			"always"
+		]
+	}
+}
