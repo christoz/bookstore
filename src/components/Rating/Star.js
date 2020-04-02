@@ -12,6 +12,7 @@ const Star = ({ onSelect, selected }) => {
 		<StyledStar
 			role="img"
 			aria-label="star"
+			data-selected={selected}
 			selected={selected}
 			onClick={onSelect}
 		>
