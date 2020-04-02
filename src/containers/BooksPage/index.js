@@ -1,25 +1,27 @@
 import React, { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
+import { Flex, Item } from 'react-flex-ready';
 
-import styles from './booksPage.module.scss';
+import BooksPageWrapper from './BooksPageWrapper';
+import { H3 } from 'components/Elements/Heading';
 import Product from 'components/Product';
 
-const BooksPage = () => {
+const BooksPage = props => {
 	const books = useSelector(state => state.books.list);
 
 	return (
-		<div className={styles.booksPage}>
-			<h3 className="title">Books list</h3>
-			<div className="row">
+		<BooksPageWrapper>
+			<H3>Books list</H3>
+			<Flex>
 				{
 					books.map((item, index) => (
-						<div className="column" key={index} >
+						<Item key={index} col={3} marginBottom={20}>
 							<Product {...item} id={index} />
-						</div>
+						</Item>
 					))
 				}
-			</div>
-		</div>
+			</Flex>
+		</BooksPageWrapper>
 	);
 };
 

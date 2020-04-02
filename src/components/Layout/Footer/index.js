@@ -1,9 +1,11 @@
 import React from 'react';
 
+import FooterWrapper from './FooterWrapper';
+
 const Footer = () => {
 	return (
-		<footer></footer>
-	)
-}
+		<FooterWrapper />
+	);
+};
 
 export default Footer;

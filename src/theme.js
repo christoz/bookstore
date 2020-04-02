@@ -28,6 +28,9 @@ const theme = {
 		baseBorderRadius: '3px',
 		labelFontSize: '12px',
 		elementsGutter: '12px'
+	},
+	grid: {
+		gutterWidth: '2rem'
 	}
 };
 

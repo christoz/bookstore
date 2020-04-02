@@ -1,11 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 
+import MainWrapper from './MainWrapper';
+
 const Main = props => {
 	return (
-		<main className="main">
+		<MainWrapper>
 			{props.children}
-		</main>
+		</MainWrapper>
 	);
 };
 

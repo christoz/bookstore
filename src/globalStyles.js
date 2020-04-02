@@ -30,7 +30,7 @@ const GlobalStyles = createGlobalStyle`
 
 	#root {
 		background-color: #fafafa;
-		min-height: 100%;
+		height: 100%;
 		min-width: 100%;
 	}
 

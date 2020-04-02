@@ -1,26 +1,24 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
-
-import styles from './navigation.module.scss';
+import Menu from 'components/Elements/Menu.js';
 
 const Navigation = () => {
 	return (
-		<nav className={styles.navigation}>
-			<ul className="menu menu--horizontal">
-				<li className="menu__item">
+		<nav>
+			<Menu justify="flex-end">
+				<Menu.Item>
 					<NavLink to="/add" activeClassName="active">
 						Add
-					</NavLink>
-				</li>
-				<li className="menu__item">
+						</NavLink>
+				</Menu.Item>
+				<Menu.Item>
 					<NavLink to="/search" activeClassName="active">
 						Search
-					</NavLink>
-				</li>
-			</ul>
-
+						</NavLink>
+				</Menu.Item>
+			</Menu>
 		</nav>
-	)
-}
+	);
+};
 
 export default Navigation;
