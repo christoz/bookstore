@@ -43,6 +43,5 @@ describe('<Rating /> spec', () => {
 			.length === 2;
 
 		expect(selectedAssertion && unselectedAssertion).toBe(true);
-
 	});
 });
