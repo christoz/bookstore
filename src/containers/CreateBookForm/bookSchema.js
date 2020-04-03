@@ -4,7 +4,7 @@ const bookSchema = yup.object().shape({
 	title: yup
 		.string()
 		.required('Required!')
-		.matches(/^[a-zA-Z\@"#&*!]+$/, 'Field can contain letters or any of @, #, &, *, !, special characters.')
+		.matches(/^[a-zA-Z\@"#&*! ]+$/, 'Field can contain letters or any of @, #, &, *, !, special characters.')
 		.min(10, 'Too Short!')
 		.max(120, 'Too Long!'),
 	description: yup
@@ -15,7 +15,7 @@ const bookSchema = yup.object().shape({
 	categories: yup
 		.string()
 		.required('Required!'),
-	authorName: yup
+	author: yup
 		.string()
 		.required('Required!'),
 	publisher: yup
@@ -23,7 +23,7 @@ const bookSchema = yup.object().shape({
 		.required('Required!')
 		.min(5, 'Too Short!')
 		.max(60, 'Too Long!'),
-	year: yup
+	published: yup
 		.string()
 		.required('Required!')
 		.test('is-year', 'Enter a valid year', (value) => {
@@ -34,13 +34,20 @@ const bookSchema = yup.object().shape({
 
 			return /^[0-9]{1,4}$/.test(value)
 		}),
-	pageNumbers: yup
+	pages: yup
 		.string()
 		.required('Required!')
 		.matches(/^\d+$/, 'Field accepts only digits')
 		.test('is-digit', 'Field must contain only digits', (value) => /^\d+$/.test(value))
 		.test('is-value', 'Field value must be between 10 and 9999', (value) => value >= 10 && value <= 9999),
-	// TODO: Create ISBN validator task
+	isbn: yup
+		.string()
+		.required('Required!')
+		.test('is-isbn', 'Enter a valid isbn number', (value) => {
+			// TODO: need more time for research,
+			// We just test for digits only and length between 10 and 13 just to present something meaningful, sort of.
+			return /^[0-9]{10,13}$/.test(value)
+		})
 });
 
 
