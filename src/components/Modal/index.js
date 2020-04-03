@@ -5,7 +5,7 @@ import PropTypes from 'prop-types';
 import MD from './ModalStyles'
 
 /**
- * A dialog component as a modal which renders outside of the parent component.
+ * A dialog component as a modal which renders outside of the app's root node element
  * @param {Object} param0
  */
 const Modal = ({ visible, onHide, children }) => visible ? ReactDOM.createPortal(

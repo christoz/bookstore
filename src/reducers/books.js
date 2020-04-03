@@ -18,6 +18,7 @@ export default createReducer(initialState, {
 		...initialState
 	}),
 	[ADD_BOOK]: (state, action) => {
+		// TODO: Check for duplicates before merging
 		return {
 			...state,
 			list: [
