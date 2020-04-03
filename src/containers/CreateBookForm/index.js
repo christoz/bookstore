@@ -1,11 +1,15 @@
 import React from 'react';
+import { useDispatch } from 'react-redux';
+import { useHistory } from 'react-router-dom';
 import useForm from 'hooks/useForm';
-
 import FormError from 'components/FormError';
-import bookSchema from './bookSchema'
+import bookSchema from './bookSchema';
+
+import { addBook } from 'actions/books';
 
 const CreateBookForm = () => {
-
+	const history = useHistory();
+	const dispatch = useDispatch();
 	const {
 		values,
 		handleChange,
@@ -19,12 +23,13 @@ const CreateBookForm = () => {
 			title: '',
 			description: '',
 			categories: '',
-			authorName: '',
+			author: '',
 			publisher: '',
-			year: '',
-			pageNumbers: ''
+			published: '',
+			pages: '',
+			isbn: ''
 		},
-		onSubmit: () => console.log('submit'),
+		onSubmit: () => dispatch(addBook(values)).then(() => history.push('/')),
 		validationSchema: bookSchema
 	});
 
@@ -46,9 +51,9 @@ const CreateBookForm = () => {
 				<FormError visible={touched}>{errors.categories}</FormError>
 			</div>
 			<div className="form-group">
-				<label htmlFor="authorName">Author</label>
-				<input name="authorName" type="text" value={values.authorName} onChange={handleChange} onBlur={handleBlur} />
-				<FormError visible={touched}>{errors.authorName}</FormError>
+				<label htmlFor="author">Author</label>
+				<input name="author" type="text" value={values.author} onChange={handleChange} onBlur={handleBlur} />
+				<FormError visible={touched}>{errors.author}</FormError>
 			</div>
 			<div className="form-group">
 				<label htmlFor="publisher">Publisher</label>
@@ -56,19 +61,19 @@ const CreateBookForm = () => {
 				<FormError visible={touched}>{errors.publisher}</FormError>
 			</div>
 			<div className="form-group">
-				<label htmlFor="year">Year</label>
-				<input name="year" type="text" value={values.year} onChange={handleChange} onBlur={handleBlur} />
-				<FormError visible={touched}>{errors.year}</FormError>
+				<label htmlFor="published">Published (<i>year</i>)</label>
+				<input name="published" type="text" value={values.published} onChange={handleChange} onBlur={handleBlur} />
+				<FormError visible={touched}>{errors.published}</FormError>
 			</div>
 			<div className="form-group">
-				<label htmlFor="pageNumbers">Page numbers</label>
-				<input name="pageNumbers" type="text" value={values.pageNumbers} onChange={handleChange} onBlur={handleBlur} />
-				<FormError visible={touched}>{errors.pageNumbers}</FormError>
+				<label htmlFor="pages">Pages</label>
+				<input name="pages" type="text" value={values.pages} onChange={handleChange} onBlur={handleBlur} />
+				<FormError visible={touched}>{errors.pages}</FormError>
 			</div>
 			<div className="form-group">
-				<label htmlFor="ISBN">ISBN-10 / ISBN-13</label>
-				<input name="ISBN" type="text" value={values.ISBN} onChange={handleChange} onBlur={handleBlur} />
-				<FormError visible={touched}>{errors.ISBN}</FormError>
+				<label htmlFor="isbn">ISBN-10 / ISBN-13</label>
+				<input name="isbn" type="text" value={values.isbn} onChange={handleChange} onBlur={handleBlur} />
+				<FormError visible={touched}>{errors.isbn}</FormError>
 			</div>
 			<div className="form-group">
 				<button type="submit" disabled={!valid} className="button button--primary" onChange={handleChange} onBlur={handleBlur}>Save</button>
