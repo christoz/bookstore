@@ -8,7 +8,7 @@ import MD from './ModalStyles'
  * A dialog component as a modal which renders outside of the parent component.
  * @param {Object} param0
  */
-const Modal = ({ visible, onHide }) => visible ? ReactDOM.createPortal(
+const Modal = ({ visible, onHide, children }) => visible ? ReactDOM.createPortal(
 	<>
 		<MD.Overlay />
 		<MD.Wrapper>
@@ -22,9 +22,7 @@ const Modal = ({ visible, onHide }) => visible ? ReactDOM.createPortal(
 						<span aria-hidden="true">&times;</span>
 					</MD.CloseButton>
 				</MD.Header>
-				<p>
-					Hello, I'm a modal.
-				</p>
+				{children}
 			</MD>
 		</MD.Wrapper>
 	</>, document.body
@@ -32,7 +30,8 @@ const Modal = ({ visible, onHide }) => visible ? ReactDOM.createPortal(
 
 Modal.propTypes = {
 	visible: PropTypes.bool.isRequired,
-	onHide: PropTypes.func.isRequired
+	onHide: PropTypes.func.isRequired,
+	children: PropTypes.node.isRequired
 }
 
 export default Modal;

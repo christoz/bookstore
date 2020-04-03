@@ -21,7 +21,7 @@ function App() {
 			</Header>
 			<Main>
 				<Switch>
-					<Route exact path="/" component={BooksPage} />
+					<Route path="/" component={BooksPage} />
 				</Switch>
 			</Main>
 			<Footer />

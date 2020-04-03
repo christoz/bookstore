@@ -14,6 +14,7 @@ const GlobalStyles = createGlobalStyle`
 		width: 100%;
 		line-height: 1.5;
 		font-size: 10px;
+		color: #333;
 	}
 
 	body {
@@ -35,6 +36,47 @@ const GlobalStyles = createGlobalStyle`
 	}
 
 	@import url('https://fonts.googleapis.com/css?family=Roboto:300,400,500,700&display=swap');
+
+
+	${'' /* TODO: Move form styles to somewhere else and more appropriate */}
+	form {
+		&-group {
+			margin-bottom: 1.6rem;
+		}
+	}
+
+	input {
+		font-size: 1.6rem;
+		font-weight: 700;
+		border-radius: 4px;
+		border: 1px solid #ededed;
+		height: 50px;
+		line-height: 5rem;
+		padding: 0 20px;
+		width: 100%;
+	}
+
+	label {
+		font-size: 2rem;
+		line-height: 4rem;
+	}
+
+	.button {
+		border-width: 2px;
+		border-style: solid;
+		border-radius: 39px;
+		cursor: pointer;
+		font-weight: 500;
+		font-size: 1.9rem;
+		display: inline-block;
+		letter-spacing: .1px;
+		padding: 13px 56px;
+		margin: 24px 0 12px;
+    	border-radius: 4px;
+		background-color: purple;
+    	border-color: purple;
+    	color: #fff;
+	}
 `;
 
 export default GlobalStyles;

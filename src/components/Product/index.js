@@ -5,6 +5,10 @@ import randomColor from 'randomcolor';
 import Rating from 'components/Rating';
 import ProductWrapper from './Product';
 
+/**
+ * Product list item
+ * @param {Object} props
+ */
 const Product = props => {
 	const color = randomColor({ hue: 'purple', luminosity: 'light' });
 

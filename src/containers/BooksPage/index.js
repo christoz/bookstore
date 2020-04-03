@@ -1,6 +1,7 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { Flex, Item } from 'react-flex-ready';
+import { Route, Link, useHistory } from 'react-router-dom';
 
 import { hideDialog } from 'actions/dialog';
 
@@ -8,9 +9,11 @@ import BooksPageWrapper from './BooksPageWrapper';
 import { H3 } from 'components/Elements/Heading';
 import Product from 'components/Product';
 import Modal from 'components/Modal';
+import CreateBookForm from 'containers/CreateBookForm';
 
 const BooksPage = props => {
 	const dispatch = useDispatch();
+	const history = useHistory();
 	const books = useSelector(state => state.books.list);
 	const productFormVisible = useSelector(state => state.dialog.visible);
 
@@ -31,10 +34,16 @@ const BooksPage = props => {
 					))
 				}
 			</Flex>
-			<Modal
-				visible={productFormVisible}
-				onHide={() => dispatch(hideDialog())}
-			/>
+			<Route
+				path="/add"
+			>
+				<Modal
+					visible={true}
+					onHide={() => history.push("/")}
+				>
+					<CreateBookForm />
+				</Modal>
+			</Route>
 		</BooksPageWrapper>
 	);
 };
