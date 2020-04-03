@@ -31,7 +31,8 @@ const theme = {
 	},
 	grid: {
 		gutterWidth: '2rem'
-	}
+	},
+	boxShadow: '0 5px 30px -15px rgba(0,0,0,.2)'
 };
 
 export default theme;

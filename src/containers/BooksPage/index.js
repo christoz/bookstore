@@ -1,13 +1,18 @@
-import React, { useEffect, useState } from 'react';
-import { useSelector } from 'react-redux';
+import React from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 import { Flex, Item } from 'react-flex-ready';
+
+import { hideDialog } from 'actions/dialog';
 
 import BooksPageWrapper from './BooksPageWrapper';
 import { H3 } from 'components/Elements/Heading';
 import Product from 'components/Product';
+import Modal from 'components/Modal';
 
 const BooksPage = props => {
+	const dispatch = useDispatch();
 	const books = useSelector(state => state.books.list);
+	const productFormVisible = useSelector(state => state.dialog.visible);
 
 	return (
 		<BooksPageWrapper>
@@ -26,6 +31,10 @@ const BooksPage = props => {
 					))
 				}
 			</Flex>
+			<Modal
+				visible={productFormVisible}
+				onHide={() => dispatch(hideDialog())}
+			/>
 		</BooksPageWrapper>
 	);
 };

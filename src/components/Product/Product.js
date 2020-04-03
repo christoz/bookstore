@@ -5,7 +5,8 @@ const Product = styled.div`
 	flex-direction: column;
 	height: 100%;
 	width: 100%;
-	border-radius: .4rem;
+	border-radius: .5rem;
+	box-shadow: ${props => props.theme.boxShadow};
 	overflow: hidden;
 
 	img {

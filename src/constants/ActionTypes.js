@@ -15,3 +15,9 @@ export const LIKE_BOOK = 'LIKE_BOOK';
  */
 export const SHOW_ALL = 'SHOW_ALL';
 export const SET_FILTER = 'SET_FILTER';
+
+/**
+ * Dialog
+ */
+export const SHOW_DIALOG = 'SHOW_DIALOG';
+export const HIDE_DIALOG = 'HIDE_DIALOG';
