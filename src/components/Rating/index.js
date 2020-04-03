@@ -1,21 +1,29 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import PropTypes from 'prop-types';
 
 import Star from './Star';
 import Wrapper from './RatingWrapper';
 
-const Rating = props => {
-	const [rateValue, setRateValue] = useState(0);
+const Rating = ({ onRate, rating, stars }) => {
+	const [rateValue, setRateValue] = useState(rating);
+
+	const onSetRate = useCallback(function (value) {
+		setRateValue(value)
+		// Optional call to lift up rate to parent component
+		if (onRate) {
+			onRate(value)
+		}
+	}, [onRate]);
 
 	return (
 		<Wrapper>
 			{
-				[...Array(props.stars)].map((_, idx) => {
+				[...Array(stars)].map((_, idx) => {
 					return (
 						<Star
 							key={idx}
 							selected={idx < rateValue}
-							onSelect={() => setRateValue(idx + 1)}
+							onSelect={() => onSetRate(idx + 1)}
 						/>
 					)
 				})}
@@ -24,7 +32,9 @@ const Rating = props => {
 };
 
 Rating.propTypes = {
-	stars: PropTypes.number
+	stars: PropTypes.number,
+	rating: PropTypes.oneOf([0, 1, 2, 3, 4, 5]),
+	onRate: PropTypes.func
 };
 
 export default Rating;
