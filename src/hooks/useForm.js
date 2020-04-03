@@ -11,11 +11,12 @@ import * as yup from 'yup'
  *
  * @returns {Object}
  */
-const useForm = ({ initialValues, onSubmit, onValidate, validationSchema }) => {
-
+const useForm = (props) => {
+	const { initialValues, onSubmit, validationSchema, onValidate } = props;
 	const [values, setValues] = useState(initialValues);
 	const [errors, setErrors] = useState({});
 	const [valid, setValid] = useState(false);
+	const [touched, setTouched] = useState(false);
 
 	function handleSubmit(event) {
 		event.preventDefault();
@@ -29,6 +30,7 @@ const useForm = ({ initialValues, onSubmit, onValidate, validationSchema }) => {
 
 		if (validationSchema) {
 			validateField(name, target.value);
+			setValid(formIsValid());
 		}
 
 		setValues(values => (
@@ -37,6 +39,18 @@ const useForm = ({ initialValues, onSubmit, onValidate, validationSchema }) => {
 				[event.target.name]: event.target.value
 			}
 		));
+
+		if (!touched) {
+			setTouched(true);
+		}
+	}
+
+	function handleBlur(event) {
+		const { target } = event;
+		const { name, value } = target;
+
+		validateField(name, value);
+		setTouched(true);
 	}
 
 	function validateField(name, value) {
@@ -47,7 +61,8 @@ const useForm = ({ initialValues, onSubmit, onValidate, validationSchema }) => {
 			.reach(validationSchema, name)
 			.validate(value)
 			.then(_ => {
-				setErrors((prevErrors) => ({ ...prevErrors, [name]: null }))
+				const { [name]: value, ...restErrors } = errors;
+				setErrors((prevErrors) => ({ ...restErrors }))
 			})
 			.catch(e => {
 				// We use a callback because closure keeps the initial "errors" reference.
@@ -56,15 +71,8 @@ const useForm = ({ initialValues, onSubmit, onValidate, validationSchema }) => {
 	}
 	/**
 	 * This function is used to check if we have at least one error reported
-	 * subsequently sets valid state to true|false
 	 */
-	function formIsValid() {
-		// eslint-disable-next-line eqeqeq
-		const isNil = val => val == undefined || val === '';
-		const isValid = !Object.keys(errors).some((key) => isNil(errors[key]))
-
-		return isValid
-	}
+	const formIsValid = () => Object.keys(errors).length === 0;
 
 	/**
 	 * Side effects for custom validation,
@@ -81,7 +89,6 @@ const useForm = ({ initialValues, onSubmit, onValidate, validationSchema }) => {
 	// We break the deps rule here to validate form also initially, which is not great
 	useEffect(() => {
 		Object.keys(initialValues).forEach((name) => validateField(name, initialValues[name]))
-		setValid(formIsValid())
 		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, []);
 
@@ -89,7 +96,10 @@ const useForm = ({ initialValues, onSubmit, onValidate, validationSchema }) => {
 		handleChange,
 		handleSubmit,
 		values,
-		errors
+		errors,
+		valid,
+		touched,
+		handleBlur
 	}
 };
 
