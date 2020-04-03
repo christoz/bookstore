@@ -73,9 +73,13 @@ const GlobalStyles = createGlobalStyle`
 		padding: 13px 56px;
 		margin: 24px 0 12px;
     	border-radius: 4px;
-		background-color: purple;
-    	border-color: purple;
+		background-color: #9d77ee;
+    	border-color: #9d77ee;
     	color: #fff;
+	}
+
+	a {
+		color: #9d77ee;
 	}
 `;
 
