@@ -1,4 +1,5 @@
 import { createStore, compose, applyMiddleware } from 'redux';
+import thunk from 'redux-thunk';
 
 import logger from 'middleware/logger';
 import rootReducer from 'reducers/root';
@@ -12,7 +13,7 @@ import rootReducer from 'reducers/root';
 export default function configureStore(initialState = {}) {
 	const isDev = process.env.NODE_ENV === 'development';
 	const composeEnhancers = (isDev && window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) || compose;
-	const middleware = applyMiddleware(logger);
+	const middleware = applyMiddleware(logger, thunk);
 	const store = createStore(rootReducer, composeEnhancers(middleware));
 
 	// Exposes store via window object in development mode to engage with it via the browser as well
