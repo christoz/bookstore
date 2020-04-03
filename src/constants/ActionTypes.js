@@ -8,7 +8,7 @@ export const INIT_BOOKS = 'INIT_BOOKS';
  */
 export const ADD_BOOK = 'ADD_BOOK';
 export const LIKE_BOOK = 'LIKE_BOOK';
-
+export const RATE_BOOK = 'RATE_BOOK';
 
 /**
  * Books filter
