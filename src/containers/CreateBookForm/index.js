@@ -75,8 +75,8 @@ const CreateBookForm = () => {
 				<input name="isbn" type="text" value={values.isbn} onChange={handleChange} onBlur={handleBlur} />
 				<FormError visible={touched}>{errors.isbn}</FormError>
 			</div>
-			<div className="form-group">
-				<button type="submit" disabled={!valid} className="button button--primary" onChange={handleChange} onBlur={handleBlur}>Save</button>
+			<div className="form-group" style={{ textAlign: 'right' }}>
+				<button type="submit" disabled={!valid} className="button button--primary">Save</button>
 			</div>
 		</form>
 	);
