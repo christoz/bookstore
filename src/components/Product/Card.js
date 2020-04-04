@@ -34,7 +34,6 @@ const Title = styled.h4`
 	margin: 0;
 	font-size: 1.8rem;
 	color: #393c45;
-	${'' /* margin-bottom: 20px; */}
 `
 
 const Author = styled.div`
@@ -57,6 +56,7 @@ const Options = styled.div`
 		font-size: 1.4rem;
 		display: block;
 		margin-bottom: 8px;
+		text-transform: capitalize;
 	}
 `;
 
