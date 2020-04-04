@@ -18,7 +18,9 @@ const Search = props => {
 	});
 
 	function doSearch() {
-		dispatch(setQuery(values.searchTerm));
+		if (values.searchTerm) {
+			dispatch(setQuery(values.searchTerm));
+		}
 	}
 
 	return (
