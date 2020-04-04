@@ -54,7 +54,8 @@ const useForm = (props) => {
 	}
 
 	function validateField(name, value) {
-		if (!validationSchema.fields[name])
+		// If no validation Schema is present, or field is non included in schema do nothing
+		if (!validationSchema || !validationSchema.fields[name])
 			return;
 
 		yup
