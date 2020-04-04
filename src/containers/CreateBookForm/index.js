@@ -22,7 +22,6 @@ const CreateBookForm = () => {
 		initialValues: {
 			title: '',
 			description: '',
-			categories: '',
 			author: '',
 			publisher: '',
 			published: '',
@@ -44,11 +43,6 @@ const CreateBookForm = () => {
 				<label htmlFor="description">Description</label>
 				<input name="description" type="text" value={values.description} onChange={handleChange} onBlur={handleBlur} />
 				<FormError visible={touched}>{errors.description}</FormError>
-			</div>
-			<div className="form-group">
-				<label htmlFor="categories">Categories</label>
-				<input name="categories" type="text" value={values.categories} onChange={handleChange} onBlur={handleBlur} />
-				<FormError visible={touched}>{errors.categories}</FormError>
 			</div>
 			<div className="form-group">
 				<label htmlFor="author">Author</label>
