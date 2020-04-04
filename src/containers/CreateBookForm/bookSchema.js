@@ -4,7 +4,7 @@ const bookSchema = yup.object().shape({
 	title: yup
 		.string()
 		.required('Required!')
-		.matches(/^[a-zA-Z\@"#&*! ]+$/, 'Field can contain letters or any of @, #, &, *, !, special characters.')
+		.matches(/^[a-zA-Z\@"#&*! ]+$/, 'Field can contain letters or any of @, #, &, *, !, \' \' special characters.')
 		.min(10, 'Too Short!')
 		.max(120, 'Too Long!'),
 	description: yup
