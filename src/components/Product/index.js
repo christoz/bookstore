@@ -4,7 +4,7 @@ import { useDispatch } from 'react-redux';
 import randomColor from 'randomcolor';
 
 import Rating from 'components/Rating';
-import ProductWrapper from './ProductWrapper';
+import Card from './Card';
 import { rateBook } from 'actions/books';
 
 /**
@@ -23,18 +23,23 @@ const Product = props => {
 	}
 
 	return (
-		<ProductWrapper>
-			<ProductWrapper.Asset bgColor={color}></ProductWrapper.Asset>
-			<ProductWrapper.Details>
-				<h4>
+		<Card>
+			<Card.Asset bgColor={color}></Card.Asset>
+			<Card.Details>
+				<Card.Title>
 					{props.title}
-				</h4>
-				<div>{props.author}</div>
-				<div>
+				</Card.Title>
+				<Card.Author>{props.author}</Card.Author>
+				<Card.Options>
+					<strong>CATEGORY</strong>
+					<span>{props.category}</span>
+				</Card.Options>
+				<Card.Options>
+					<strong>Rate it!</strong>
 					<Rating stars={5} rating={props.rating} onRate={rateProduct} />
-				</div>
-			</ProductWrapper.Details>
-		</ProductWrapper>
+				</Card.Options>
+			</Card.Details>
+		</Card >
 	);
 };
 
