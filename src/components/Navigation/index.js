@@ -1,18 +1,19 @@
 import React from 'react';
 import { NavLink } from 'react-router-dom';
 import Menu from 'components/Elements/Menu.js';
+import NavWrapper from './NavWrapper';
 
 const Navigation = () => {
 	return (
-		<nav>
+		<NavWrapper>
 			<Menu justify="flex-end">
 				<Menu.Item>
-					<NavLink to="/add" activeClassName="active">
+					<NavLink to="/add" activeClassName="active" className="button">
 						Add book
-						</NavLink>
+					</NavLink>
 				</Menu.Item>
 			</Menu>
-		</nav>
+		</NavWrapper>
 	);
 };
 
