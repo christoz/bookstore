@@ -5,12 +5,29 @@ import { books } from 'data/books';
 
 const initialState = {
 	list: books,
+	searchList: books,
 	loading: false
 };
 
+/**
+ * State selector for books filtering category attribute
+ * @param {Array} state
+ * @param {String} filter
+ * @returns {Array)
+ */
 
-export const getBooksByIsbn = (state, isbn) => {
-	return state.filter(b => b.isbn === isbn);
+export const getVisibleBooks = (state, filter) => {
+
+	switch (filter) {
+		case 'beginner':
+			return state.filter(b => b.category === 'beginner')
+		case 'intermediate':
+			return state.filter(b => b.category === 'intermediate')
+		case 'expert':
+			return state.filter(b => b.category === 'expert')
+		default:
+			return state;
+	}
 };
 
 export default createReducer(initialState, {
