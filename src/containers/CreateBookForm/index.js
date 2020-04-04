@@ -66,7 +66,7 @@ const CreateBookForm = () => {
 				<FormError visible={touched}>{errors.publisher}</FormError>
 			</div>
 			<div className="form-group">
-				<label htmlFor="category">Publisher</label>
+				<label htmlFor="category">Category</label>
 				<select name="category" onChange={handleChange} onBlur={handleBlur} >
 					{renderOptions()}
 				</select>
