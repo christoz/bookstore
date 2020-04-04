@@ -8,12 +8,7 @@ const Navigation = () => {
 			<Menu justify="flex-end">
 				<Menu.Item>
 					<NavLink to="/add" activeClassName="active">
-						Add
-						</NavLink>
-				</Menu.Item>
-				<Menu.Item>
-					<NavLink to="/search" activeClassName="active">
-						Search
+						Add book
 						</NavLink>
 				</Menu.Item>
 			</Menu>
