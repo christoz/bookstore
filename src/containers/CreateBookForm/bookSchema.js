@@ -12,9 +12,6 @@ const bookSchema = yup.object().shape({
 		.required('Required!')
 		.matches(/^[A-Z]/, 'First character must be uppercase')
 		.max(512),
-	categories: yup
-		.string()
-		.required('Required!'),
 	author: yup
 		.string()
 		.required('Required!'),
@@ -43,7 +40,7 @@ const bookSchema = yup.object().shape({
 	isbn: yup
 		.string()
 		.required('Required!')
-		.test('is-isbn', 'Enter a valid isbn number', (value) => {
+		.test('is-isbn', 'Please enter a number with length between 10 and 13', (value) => {
 			// TODO: need more time for research,
 			// We just test for digits only and length between 10 and 13 just to present something meaningful, sort of.
 			return /^[0-9]{10,13}$/.test(value)
