@@ -56,6 +56,11 @@ const GlobalStyles = createGlobalStyle`
 		width: 100%;
 	}
 
+	::placeholder {
+		font-size: 1.4rem;
+		font-weight: 300;
+	}
+
 	label {
 		font-size: 2rem;
 		line-height: 4rem;
@@ -78,6 +83,10 @@ const GlobalStyles = createGlobalStyle`
 		background-color: #9d77ee;
 		border-color: #9d77ee;
 		color: #fff;
+	}
+
+	.button[disabled] {
+		opacity: 0.6
 	}
 
 
