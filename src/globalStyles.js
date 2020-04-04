@@ -45,6 +45,7 @@ const GlobalStyles = createGlobalStyle`
 		}
 	}
 
+	select,
 	input {
 		font-size: 1.6rem;
 		font-weight: 700;
@@ -54,6 +55,7 @@ const GlobalStyles = createGlobalStyle`
 		line-height: 5rem;
 		padding: 0 20px;
 		width: 100%;
+		background-color: white;
 	}
 
 	::placeholder {

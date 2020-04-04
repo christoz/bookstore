@@ -1,15 +1,18 @@
 import React from 'react';
-import { useDispatch } from 'react-redux';
+import { useDispatch, useSelector } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import useForm from 'hooks/useForm';
 import FormError from 'components/FormError';
 import bookSchema from './bookSchema';
-
+import { getVisibleBooks } from 'reducers/root';
 import { addBook } from 'actions/books';
+import { getCategories } from './selectors';
 
 const CreateBookForm = () => {
 	const history = useHistory();
 	const dispatch = useDispatch();
+	const books = useSelector(state => getVisibleBooks(state, 'SHOW_ALL'))
+
 	const {
 		values,
 		handleChange,
@@ -32,6 +35,14 @@ const CreateBookForm = () => {
 		validationSchema: bookSchema
 	});
 
+	function renderOptions() {
+		return getCategories(books).map((cat, index) => {
+			return (
+				<option key={index} value={cat.value}>{cat.label}</option>
+			);
+		})
+	}
+
 	return (
 		<form onSubmit={handleSubmit}>
 			<div className="form-group">
@@ -53,6 +64,13 @@ const CreateBookForm = () => {
 				<label htmlFor="publisher">Publisher</label>
 				<input name="publisher" type="text" value={values.publisher} onChange={handleChange} onBlur={handleBlur} />
 				<FormError visible={touched}>{errors.publisher}</FormError>
+			</div>
+			<div className="form-group">
+				<label htmlFor="category">Publisher</label>
+				<select name="category" onChange={handleChange} onBlur={handleBlur} >
+					{renderOptions()}
+				</select>
+				<FormError visible={touched}>{errors.category}</FormError>
 			</div>
 			<div className="form-group">
 				<label htmlFor="published">Published (<i>year</i>)</label>
