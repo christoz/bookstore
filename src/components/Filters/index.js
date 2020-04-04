@@ -18,7 +18,7 @@ const Filters = (props) => {
 			<FiltersWrapper>
 				<label>
 					<input type="radio" name="none" checked={selectedFilter === 'SHOW_ALL'} onChange={() => pickFilter(null)} />
-					<span>No category</span>
+					<span>All categories</span>
 				</label>
 				<label>
 					<input type="radio" name="beginner" checked={selectedFilter === 'beginner'} onChange={() => pickFilter('beginner')} />
